@@ -6,13 +6,13 @@ body {
   color: #402c1c;
 }
 
-.logo img {
+/* .logo img {
   height: 70px;
   width: auto;
-}
+} */
 
 /* ==== Navbar (unchanged) ==== */
-.navbar {
+/* .navbar {
   background-color: rgba(139, 0, 0, 0.8);
   padding: 10px 20px;
   display: flex;
@@ -50,7 +50,7 @@ body {
 .nav-links li a:hover {
   color: #ffd700;
   transform: scale(1.1);
-}
+} */
 
 .menu-toggle {
   display: none;
@@ -298,7 +298,7 @@ body {
   }
 }
 
-/* ==== Footer (unchanged) ==== */
+/* ==== Footer (unchanged) ====
 footer {
   background-color: #222;
   color: #fff;
@@ -333,11 +333,11 @@ footer {
   padding-top: 20px;
   margin-top: 30px;
   font-size: 14px;
-  color: #ccc;
-}
+  color: #ccc; */
+/* }
 
 /* ==== Responsive ==== */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(2, minmax(260px, 1fr));
   }
@@ -361,4 +361,4 @@ footer {
   .logo img {
     height: 50px;
   }
-}
+} */ 

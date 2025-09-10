@@ -1,55 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//   const feedbackForm = document.getElementById("feedbackForm");
-//   const feedbackDisplay = document.getElementById('feedbackDisplay');
-
-//   feedbackForm.addEventListener("submit", async function (event) {
-//     event.preventDefault();
-
-//     const name = document.getElementById("name").value.trim();
-//     const message = document.getElementById("message").value.trim();
-//     const ratingInput = document.querySelector('input[name="rating"]:checked');
-//     const rating = ratingInput ? parseInt(ratingInput.value) : null;
-
-//     if (!name || !message || !rating) {
-//       alert('Please fill your name, feedback, and give a rating.');
-//       return;
-//     }
-
-//     // Frontend display
-//     const stars = '★'.repeat(rating);
-//     feedbackDisplay.innerHTML = `
-//       <strong> Name:</strong> ${name}<br>
-//       <strong>Feedback:</strong> ${message}<br>
-//       <strong>🌟 Rating:</strong> ${stars}
-//     `;
-//     feedbackDisplay.style.display = 'block';
-
-//     // MongoDB me save
-//     try {
-//       const response = await fetch('http://localhost:5000/api/users', {  // ← Absolute URL
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ name, message, rating })
-//       });
-//       if (!response.ok) {
-//         throw new Error('Failed to save data');
-//       }
-//       const data = await response.json();
-//       console.log('Data saved in MongoDB:', data);
-//     } catch (err) {
-//       console.error('Error saving data:', err);
-//       alert('Oops! Something went wrong while saving your feedback.');
-//     }
-
-//     feedbackForm.reset();
-//   });
-// });
-
-
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const feedbackForm = document.getElementById("feedbackForm");
@@ -142,3 +90,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Hamburger activate
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      });

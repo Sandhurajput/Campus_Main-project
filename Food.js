@@ -1,34 +1,31 @@
-document.addEventListener('click', function(e){
-      const card = e.target.closest('.flip-card');
-      if(card){ card.classList.toggle('flipped'); }
-    });
-    document.addEventListener('keydown', function(e){
-      const active = document.activeElement;
-      if(active && active.classList.contains('flip-card') && (e.key === 'Enter' || e.key === ' ')){
-        e.preventDefault();
-        active.classList.toggle('flipped');
-      }
-    });
-    // Recipe buttons open video
-    document.addEventListener('click', function(e){
-      const btn = e.target.closest('.recipe-btn');
-      if(btn){
-        e.stopPropagation();
-        const url = btn.getAttribute('data-url');
-        if(url) window.open(url, '_blank');
-      }
-    });
+// Flip card
+document.addEventListener("click", e => {
+  const card = e.target.closest(".flip-card");
+  if (card) card.classList.toggle("flipped");
+});
 
-    fetch("navbar.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("navbar").innerHTML = data;
+// Recipe button
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".recipe-btn");
+  if (btn) {
+    e.stopPropagation();
+    window.open(btn.dataset.url, "_blank");
+  }
+});
 
-        // Hamburger activate
-        const menuToggle = document.getElementById("menu-toggle");
-        const navLinks = document.getElementById("nav-links");
+// Inject Navbar dynamically
+fetch("navbar.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
 
-        menuToggle.addEventListener("click", () => {
-          navLinks.classList.toggle("show");
-        });
+    // Hamburger activate
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
       });
+    }
+  });

@@ -1,0 +1,94 @@
+<!DOCTYPE html>            
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bihar — Students Map</title>
+
+  <!-- Favicon (Tab Icon) -->
+  <link rel="icon" type="image/png" href="images/l0g.webp"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+  <nav style="
+    background: linear-gradient(90deg, #8b0000, #fc3d3d);
+    height: 70px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  ">
+    <ul style="
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    ">
+      
+      <!-- Left -->
+      <li><a href="house.html" style="font-weight: bold; text-decoration: none; color: white;">Our Campus</a></li>
+      
+      <!-- Center -->
+      <li style="text-align: center; flex: 1;">
+        <a href="index.html" style="font-weight: bold; text-decoration: none; color: white;">Bihar</a>
+      </li>
+      
+      <!-- Right -->
+      <li><a href="ourculture.html" style="font-weight: bold; text-decoration: none; color: white;">Our Culture</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- 👇 Add this so your page content doesn't hide behind fixed navbar -->
+<div style="height: 70px;"></div>
+
+
+
+  <main class="main">
+    <section class="map-area">
+      <div id="map-container" class="map-container" style="position:relative; width:100%; max-width:900px; margin:0 auto;">
+        <img src="images/map-removebg-preview.png" alt="Bihar map" class="map-image" style="width:100%; display:block;">
+        <!-- Dots will be injected by script.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Panel (kept for later JS) -->
+  <div id="student-panel" class="panel hidden" aria-hidden="true">
+    <div class="panel-content">
+      <button id="close-panel" class="close-panel" aria-label="Close">&times;</button>
+      <h2 id="panel-title"></h2>
+      <ul id="panel-list"></ul>
+    </div>
+  </div>
+
+  <!-- Modal (kept for later JS) -->
+  <div id="student-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-content">
+      <button id="close-modal" class="close-modal" aria-label="Close">&times;</button>
+      <img id="modal-photo" src="" alt="photo">
+      <h3 id="modal-name"></h3>
+      <p id="modal-intro"></p>
+      <h4>Skills</h4>
+      <ul id="modal-skills"></ul>
+      <h4>Projects</h4>
+      <ul id="modal-projects"></ul>
+    </div>
+  </div>
+
+  <!-- script placeholder (JS will later handle colors, click events etc.) -->
+   <script src="student.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

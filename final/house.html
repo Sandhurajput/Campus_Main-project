@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Community House</title>
+  <link rel="stylesheet" href="campus.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+   
+    <img src="images/pp.png" alt="Logo" class="big-logo">
+
+ 
+    <img src="images/ng.png" alt="Logo" class="small-logo">
+
+  
+    <ul>
+      <li><a class="home" href="house.html">Our House</a></li>
+      <li><a class="home" href="schedule.html">Schedule</a></li>
+      <li><a class="home" href="council.html">Council</a></li>
+      <li><a class="home" href="reward.html">Reward</a></li>
+    </ul>
+  </div>
+
+  <header>
+    <h1>Our Community House</h1>
+  </header>
+
+  <div class="single-leader-display">
+    <div class="single-leader-card">
+      <h3>Bhairav</h3>
+      <img src="images/ruchi kushwaha.jpeg" alt="Bhairav Leader">
+      <p><b>House Leader</b></p>
+      <p>Ruchi Kumari</p>
+    </div>
+    <div class="single-leader-card">
+      <h3>Bageshree</h3>
+      <img src="images/nikkie.jpeg" alt="Bagheshree Leader">
+      <p><b>House Leader</b></p>
+      <p>Nikky Roy</p>
+    </div>
+    <div class="single-leader-card">
+      <h3>Malhar</h3>
+      <img src="images/bebee.jpeg" alt="Malhar Leader">
+      <p><b>House Leader</b></p>
+      <p>Bebee Mishra</p>
+    </div>
+  </div>
+
+<div class="houses-container">
+  <div class="house">
+    <h2>Bhairav</h2>
+    <div class="community">
+      <img src="images/bhairav.jpeg" alt="Bhairav Community">
+    </div>
+    <button onclick="toggleMembers('bhairav')">Know More</button>
+    <div class="members" id="bhairav-members">
+      <p>Raga Bhairavi is a popular morning raga in Hindustani classical music. It uses komal Re, Ga, Dha, Ni with Ma as the Vadi and Sa as the Samvadi. Known for its calm and sweet mood, it is often sung in bhajans and light classical compositions. Today, it is also performed at any time of the day.</p>
+    </div>
+  </div>
+
+  <div class="house">
+    <h2>Bageshree</h2>
+    <div class="community">
+      <img src="images/bageshree.jpeg" alt="Bagheshree Community">
+    </div>
+    <button onclick="toggleMembers('bagheshree')">Know More</button>
+    <div class="members" id="bagheshree-members">
+      <p>Raga Bageshree is a night raga, sung from late evening to midnight. It uses Komal Ga and Komal Ni, with Ma as the Vadi and Sa as the Samvadi. The raga expresses love and longing (Shringar Ras) and is known for its sweet, emotional mood.</p>
+    </div>
+  </div>
+
+  <div class="house">
+    <h2>Malhar</h2>
+    <div class="community">
+      <img src="images/malhar.jpeg" alt="Malhar Community">
+    </div>
+    <button onclick="toggleMembers('malhar')">Know More</button>
+    <div class="members" id="malhar-members">
+      <p>Raga Malhar is associated with the rainy season and is believed to evoke the mood of rain. It is usually sung during monsoon evenings or nights. The raga expresses peace, freshness, and nature’s beauty, with famous forms like Miyan ki Malhar and Gaud Malhar.</p>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reward Celebration - Campus Reward Celebration</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts 'Inter' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="campus.css">
+    <style>
+        /* Custom CSS for better aesthetics and animations */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(to right, #e3e8ef, #e2eaf5);
+            color: #1a202c; 
+            overflow-x: hidden; 
+        }
+        .container {
+            max-width: 1200px;
+            margin: 10px auto;
+            padding: 2rem;
+            /* Added margin to push the container down and separate it from the navbar */
+            margin-top: 5rem;
+        }
+        
+        /* Animation on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Base card styling with professional gradient and shadow */
+        .card {
+            /* Removed the white background to make it transparent */
+            background-color: transparent; 
+            box-shadow: none; /* Removed box shadow */
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.03); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Custom glow and 3D effect for person cards */
+        .person-card {
+            background-color: #fcf7f7; 
+            border: 2px solid #e2e8f0; 
+            position: relative;
+            overflow: hidden;
+            height: 12rem; 
+            transition: all 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 11rem; 
+            max-width: 11rem; 
+        }
+
+        /* 3D and glow on hover */
+        .person-card:hover {
+            transform: translateY(-5px) scale(1.05) rotateX(5deg); 
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.7); 
+            background-color: #e6f0ff;
+        }
+
+        /* Glowing border effect using pseudo-elements */
+        .person-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, transparent,  rgba(219, 210, 122, 0.8),rgba(248, 247, 243, 0.8), rgba(224, 215, 129, 0.8), transparent);
+            z-index: -1;
+            transform: rotate(0deg);
+            transition: transform 1s ease-in-out;
+        }
+        .person-card:hover::before {
+            animation: glow-rotate 2s linear infinite;
+        }
+
+        @keyframes glow-rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Winner trophy image animation */
+        .trophy-bounce {
+            animation: bounce-in 1.5s ease-out;
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        /* Winner text jump animation */
+        .winner-jump {
+            animation: jump-in 1.2s ease-in-out;
+        }
+
+        @keyframes jump-in {
+            0% {
+                transform: translateY(-50px) scale(0.7);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(10px) scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Badge styling with rich gradients */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            margin-top: 0.5rem;
+            text-transform: capitalize; 
+        }
+
+        .badge-academic {
+            background-image: linear-gradient(to right, #6A11CB, #2575FC);
+        }
+
+        .badge-culture {
+            background-image: linear-gradient(to right, #F5A623, #FFD700);
+        }
+        .badge-overall {
+            background-image: linear-gradient(to right, #E83A59, #FF5B71);
+        }
+
+        /* Styling for the house sections, no background or padding */
+        .house-section {
+            background: none;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        /* New button style */
+        .btn {
+            background-image: linear-gradient(to right, #56ab2f, #a8e063);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Cursor for typing animation */
+        .typing-cursor {
+            font-weight: bold;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: black; }
+        }
+
+        /* Ensures images are perfectly round and uniform */
+        .person-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        /* Custom object-position for specific images to keep the face visible */
+        .person-image.guddi {
+            object-position: 50% 10%; /* Guddi's face is a bit high up */
+        }
+        .person-image.aarti {
+            object-position: 50% 30%; /* Aarti's face is also higher than the center */
+        }
+
+        /* Image container to ensure all images have a consistent size */
+        .person-image-container {
+            width: 96px; 
+            height: 96px;
+            min-width: 96px;
+            min-height: 96px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem; /* optional rounded corners */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* removes black bars */
+        }
+
+        /* Flexbox for the horizontal alignment of house columns */
+        .house-columns {
+            display: flex;
+            justify-content: space-around;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* New responsive styling */
+        @media (max-width: 768px) {
+            .house-columns {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Styling for the navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color:rgba(255, 255, 255, 0.9);
+            -webkit-backdrop-filter :blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Fixed position to stay at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar a {
+            font-weight: 600;
+            color: #333;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #4c8bf5;
+        }
+
+        .navbar .big-logo, .navbar .small-logo {
+            height: 40px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navbar has been styled and given a fixed position -->
+     <nav class="navbar">
+        <img src="images/pp.png" alt="Logo" class="big-logo">
+        <img src="images/ng.png" alt="Logo" class="small-logo">
+        <ul>
+        <li><a class="home" href="house.html">Our House</a></li>
+      <li><a class="home" href="schedule.html">Schedule</a></li>
+      <li><a class="home" href="council.html">Council</a></li>
+      <li><a class="home" href="reward.html">Reward</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main container now has a top margin to create space below the navbar -->
+    <div class="container min-h-screen py-8 md:py-16">
+        <!-- Header section -->
+        <header class="text-center mb-12 md:mb-16 animate-on-scroll">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-2 md:mb-4 winner-jump" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.3);">
+                Reward Celebration
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-600 font-medium">
+                A celebration of our efforts!
+            </p>
+        </header>
+
+        <!-- About celebration section -->
+        <section class="mb-12 md:mb-20 animate-on-scroll">
+            <div class="p-6 md:p-12 rounded-2xl text-center card">
+                <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-yellow-600">Why This Celebration?</h2>
+                <p class="text-base md:text-xl leading-relaxed text-gray-700 typing-text" id="why-celebration-text">
+                </p>
+            </div>
+        </section>
+
+        <!-- First Reward Celebration Section -->
+        <section class="mb-12 md:mb-20 animate-on-scroll">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-teal-600">First Reward Celebration</h2>
+            <div class="p-6 md:p-12 rounded-2xl">
+                <p class="text-xl md:text-2xl text-center font-semibold text-gray-800 mb-6 md:mb-8">Winner: <span class="text-yellow-600 winner-jump">Bageshree House</span></p>
+                <div class="flex justify-center mb-6 md:mb-8 animate-on-scroll">
+                    <!-- Correct image for first reward celebration -->
+                    <img src="images/first_reward.jpeg" alt="Bageshree House" class="rounded-lg shadow-lg trophy-bounce w-full max-w-lg">
+                </div>
+                <div class="house-columns">
+                    <!-- Bhairav House -->
+                    <div class="p-0 rounded-xl text-center house-section flex flex-col items-center">
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-orange-600">Bhairav House</h3>
+                        <div class="flex flex-col items-center space-y-2 md:space-y-4">
+                            <!-- Overall winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/sandhya.jpeg" class="person-image" alt="Sandhya">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Sandhya</p>
+                                    <span class="badge badge-overall">Overall</span>
+                                </div>
+                            </div>
+                            <!-- Culture winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/nikita.jpeg" class="person-image" alt="Nikita">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Nikita</p>
+                                    <span class="badge badge-culture">Culture</span>
+                                </div>
+                            </div>
+                            <!-- Academic winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/kajal22.jpeg" class="person-image" alt="Kajal">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Kajal</p>
+                                    <span class="badge badge-academic">Academic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Malhar House -->
+                    <div class="p-0 rounded-xl text-center house-section flex flex-col items-center">
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-fuchsia-600">Malhar House</h3>
+                        <div class="flex flex-col items-center space-y-2 md:space-y-4">
+                            <!-- Overall winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/kishyyy.jpeg" class="person-image" alt="Kishy">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Kishy</p>
+                                    <span class="badge badge-overall">Overall</span>
+                                </div>
+                            </div>
+                            <!-- Culture winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/soni.jpeg" class="person-image" alt="Soni">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Soni</p>
+                                    <span class="badge badge-culture">Culture</span>
+                                </div>
+                            </div>
+                            <!-- Academic winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/payal.jpeg" class="person-image" alt="Payal">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Payal</p>
+                                    <span class="badge badge-academic">Academic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bageshree House -->
+                    <div class="p-0 rounded-xl text-center house-section flex flex-col items-center">
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-amber-600">Bageshree House</h3>
+                        <div class="flex flex-col items-center space-y-2 md:space-y-4">
+                            <!-- Overall winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/rinki.jpeg" class="person-image" alt="Rinki">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Rinki Nisha</p>
+                                    <span class="badge badge-overall">Overall</span>
+                                </div>
+                            </div>
+                            <!-- Culture winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/guddi.jpeg" class="person-image guddi" alt="Guddi">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Guddi</p>
+                                    <span class="badge badge-culture">Culture</span>
+                                </div>
+                            </div>
+                            <!-- Academic winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/arti.jpeg" class="person-image aarti" alt="Aarti">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Aarti Sharma</p>
+                                    <span class="badge badge-academic">Academic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="mb-12 md:mb-20 animate-on-scroll">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-teal-600">
+                Glimpses of the Celebration
+            </h2>
+            <div class="p-6 md:p-12 rounded-2xl text-center animate-on-scroll">
+                <!-- Video Embed -->
+                <div class="relative overflow-hidden rounded-xl h-[300px] md:h-[400px]">
+                    <video 
+                    class="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
+                    src="images/video.mp4"
+                    controls
+                    playsinline>
+                    </video>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Latest Reward Celebration Section -->
+        <section class="mb-12 md:mb-20 animate-on-scroll">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-teal-600">Latest Reward Celebration</h2>
+            <div class="p-6 md:p-12 rounded-2xl">
+                <p class="text-xl md:text-2xl text-center font-semibold text-gray-800 mb-6 md:mb-8">Winner: <span class="text-yellow-600 winner-jump">Bageshree House</span></p>
+                <div class="flex justify-center mb-6 md:mb-8 animate-on-scroll">
+                    <!-- Correct image for latest reward celebration -->
+                    <img src="images/bageshree.jpeg" alt="Bageshree House" class="rounded-lg shadow-lg trophy-bounce w-full max-w-lg">
+                </div>
+                
+                <div class="house-columns">
+                    <!-- Bhairav House -->
+                    <div class="p-0 rounded-xl text-center house-section flex flex-col items-center">
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-orange-600">Bhairav House</h3>
+                        <div class="flex flex-col items-center space-y-2 md:space-y-4">
+                            <!-- Overall winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/ruchi sah.jpeg" class="person-image" alt="Ruchi">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Ruchi Saha</p>
+                                    <span class="badge badge-overall">Overall</span>
+                                </div>
+                            </div>
+                            <!-- Culture winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/punam.jpeg" class="person-image" alt="Punam">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Punam</p>
+                                    <span class="badge badge-culture">Culture</span>
+                                </div>
+                            </div>
+                            <!-- Academic winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/stuti.jpeg" class="person-image" alt="Stuti">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Stuti</p>
+                                    <span class="badge badge-academic">Academic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Malhar House -->
+                    <div class="p-0 rounded-xl text-center house-section flex flex-col items-center">
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-fuchsia-600">Malhar House</h3>
+                        <div class="flex flex-col items-center space-y-2 md:space-y-4">
+                            <!-- Overall winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/kajalthakur.jpeg" class="person-image" alt="Kajal">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Kajal Thakur</p>
+                                    <span class="badge badge-overall">Overall</span>
+                                </div>
+                            </div>
+                            <!-- Culture winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/sheela.jpeg" class="person-image" alt="Sheela">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Sheela Mahto</p>
+                                    <span class="badge badge-culture">Culture</span>
+                                </div>
+                            </div>
+                            <!-- Academic winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/soni.jpeg" class="person-image" alt="Soni">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Soni</p>
+                                    <span class="badge badge-academic">Academic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bageshree House -->
+                    <div class="p-0 rounded-xl text-center house-section flex flex-col items-center">
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-amber-600">Bageshree House</h3>
+                        <div class="flex flex-col items-center space-y-2 md:space-y-4">
+                            <!-- Overall winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                  <img src="images/priyt priya.jpeg" class="person-image" alt="Prity">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Prity Priya</p>
+                                    <span class="badge badge-overall">Overall</span>
+                                </div>
+                            </div>
+                            <!-- Culture winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/arti.jpeg" class="person-image" alt="Aarti">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Aarti Sharma</p>
+                                    <span class="badge badge-culture">Culture</span>
+                                </div>
+                            </div>
+                            <!-- Academic winner card -->
+                            <div class="p-3 md:p-4 rounded-xl flex flex-col items-center justify-center person-card">
+                                <div class="person-image-container mb-2 md:mb-3 border-[3px] border-solid border-yellow-500">
+                                    <img src="images/neha.jpeg" class="person-image aarti" alt="Neha">
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="font-semibold text-base md:text-lg overflow-hidden text-ellipsis whitespace-nowrap">Neha</p>
+                                    <span class="badge badge-academic">Academic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Javascript for animations -->
+        <script>
+            // IntersectionObserver to add animations on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-visible');
+                    } else {
+                        entry.target.classList.remove('animate-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 
+            });
+
+            // A separate observer for the typewriter animation
+            const typewriterText = "Our reward celebration happens at the end of every month. During the day we participate in house competitions, talent shows, and games. At night, we get fully ready to celebrate a month of hard work and dedication. Every day, we help each other learn and improve in academic, cultural, and all aspects. This celebration inspires us to start the next month with full energy and dedication to learning with our community.";
+            const typewriterElement = document.getElementById('why-celebration-text');
+            let isTyped = false;
+
+            const typewriterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isTyped) {
+                        typeWriter(typewriterElement, typewriterText);
+                        isTyped = true; 
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                threshold: 0.5 
+            });
+
+            // Typewriter function
+            function typeWriter(element, text) {
+                let i = 0;
+                element.textContent = '';
+                const cursorSpan = document.createElement('span');
+                cursorSpan.classList.add('typing-cursor');
+                cursorSpan.textContent = '|';
+                element.appendChild(cursorSpan);
+
+                function typing() {
+                    if (i < text.length) {
+                        element.textContent = text.substring(0, i + 1);
+                        i++;
+                        setTimeout(typing, 20); 
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+                typing();
+            }
+
+            // Select all animatable elements
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+            // Start observing the typewriter element
+            typewriterObserver.observe(typewriterElement);
+        </script>
+    </div>
+</body>
+</html>

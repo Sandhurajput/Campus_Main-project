@@ -1,0 +1,399 @@
+#Kishanganj { top:40%; left:80%; }
+#Araria { top:40%; left:70%; }
+#Purnia { top:48%; left:75%; }
+#Katihar { top:55%; left:76%; }
+#Supaul { top:38%; left:60%; }
+#Madhepura { top:42%; left:60%; }
+#Madhubani { top:36%; left:50%; }
+#Darbhanga { top:43%; left:52%; }
+#Sitamarhi { top:33%; left:42%; }
+#Muzaffarpur { top:42%; left:38%; }
+#Vaishali { top:50%; left:37%; }
+#Samastipur { top:47%; left:45%; }
+#Begusarai { top:56%; left:57%; }
+#Khagaria { top:52%; left:66%; }
+#Bhagalpur { top:60%; left:70%; }
+#Gopalganj { top:34%; left:27%; }
+#Siwan { top:42%; left:27%; }
+#Saran { top:46%; left:32%; }
+#Patna { top:54%; left:43%; }
+#Nalanda { top:52%; left:52%; }
+#Jehanabad { top:60%; left:40%; }
+#Gaya { top:70%; left:40%; }
+#Aurangabad { top:72%; left:32%; }
+#Rohtas { top:68%; left:25%; }
+#Kaimur { top:60%; left:20%; }
+#Munger { top:60%; left:63%; }
+#Lakhisarai { top:60%; left:52%; }
+#Sheikhpura { top:64%; left:50%; }
+#Nawada { top:68%; left:48%; }
+#Jamui { top:70%; left:60%; }
+#Banka { top:70%; left:66%; }
+#WestChamparan { top:20%; left:28%; }
+#EastChamparan { top:28%; left:33%; }
+#Sheohar { top:37%; left:36%; }
+#Bhojpur { top:58%; left:30%; }
+#Buxar { top:55%; left:25%; }
+#Chhapra { top:38%; left:44%; } */
+
+.navbar {
+  display: flex;
+  position: fixed;
+  width: 100%; 
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  height: 70px;
+}
+
+.nav-item {
+  flex: 1; 
+  text-align: center;
+}
+
+.nav-item.left { text-align: left; }
+.nav-item.center { text-align: center; }
+.nav-item.right { text-align: right; }
+
+.nav-item a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+}
+
+.nav-item a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  transform: translateY(-2px);
+}
+
+
+/* council ka navbar ka style */
+.navbar ul {
+  list-style: none;  
+  display: flex;    
+  gap: 25px;         
+  margin: 0;          
+  padding: 0;        
+}
+
+.navbar li {
+  display: inline-block; 
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: black;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+* { box-sizing: border-box; }
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  padding-top: 90px;
+  text-align: center;
+  color: #0b0b0b;
+}
+
+header { text-align:center; padding:10px 0; }
+h1 { margin: 8px 0; font-size: 20px; }
+
+.map-area { display:flex; justify-content:center; }
+.map-wrapper {
+  position: relative;
+  width: 95%;
+  max-width: 1200px;
+  border-radius: 8px;
+  overflow: visible;
+  margin-bottom: 24px;
+}
+.map-image {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+  margin-top: 5%;
+}
+
+.district {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.label {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.95);
+  padding: 2px 6px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.dot.green { background: #28a745; animation: pulse 1.6s infinite alternate; }
+.dot.red { background: #e63946; }
+
+@keyframes pulse {
+  from { transform: scale(1); filter: drop-shadow(0 0 4px #28a745); }
+  to   { transform: scale(1.35); filter: drop-shadow(0 0 16px #28a745); }
+}
+
+.bubble {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(40,167,69,0.95);
+  pointer-events: none;
+  animation: rise 1.2s ease-out forwards;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+@keyframes rise {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to   { transform: translateY(-50px) scale(0.5); opacity: 0; }
+}
+
+.panel {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 70;
+}
+.panel.hidden { display: none; }
+
+.panel-content {
+  background: #fff;
+  border-radius: 12px;
+  width: 360px;
+  max-height: 80vh;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  overflow-y: auto;
+  position: relative;
+}
+.panel-content h2 { margin-top:0; font-size:18px; text-align:center; }
+.panel-content ul { list-style:none; padding:0; margin:0; }
+.panel-content li {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  background: #f7f9fc;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.panel-content li:hover { background: #eaf1ff; }
+
+.close-panel {
+  position:absolute;
+  right:12px;
+  top:12px;
+  background:#eee;
+  border:0;
+  font-size:20px;
+  cursor:pointer;
+  border-radius:50%;
+  width:28px; height:28px;
+  display:flex; align-items:center; justify-content:center;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,0.5);
+  z-index: 80;
+}
+.modal.hidden { display: none; }
+
+.modal-content {
+  background: #fff;
+  padding:20px;
+  border-radius:12px;
+  width: 360px;
+  text-align:center;
+  position:relative;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.modal-content img {
+  width:92px; height:92px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  margin:8px auto 16px;
+}
+.modal-content h3 { margin: 8px 0; font-size:18px; }
+.modal-content p { font-size:14px; color:#444; }
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 12px;
+}
+.modal-content li {
+  background: #f2f6fb;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.close-modal {
+  position:absolute;
+  right:12px; top:12px;
+  background:#eee; border:0;
+  font-size:20px; cursor:pointer;
+  border-radius:50%;
+  width:28px; height:28px;
+  display:flex; align-items:center; justify-content:center;
+}
+
+@media (max-width:700px){
+  .panel-content, .modal-content { width: 90%; max-height: 80vh; }
+  .label { font-size:11px; padding:2px 4px; }
+  .dot { width: 12px; height: 12px; }
+}
+
+#Kishanganj { top:40%; left:80%; }
+#Araria { top:40%; left:70%; }
+#Purnia { top:48%; left:75%; }
+#Katihar { top:55%; left:76%; }
+#Supaul { top:38%; left:60%; }
+#Madhepura { top:42%; left:60%; }
+#Madhubani { top:36%; left:50%; }
+#Darbhanga { top:43%; left:52%; }
+#Sitamarhi { top:33%; left:42%; }
+#Muzaffarpur { top:42%; left:38%; }
+#Vaishali { top:50%; left:37%; }
+#Samastipur { top:47%; left:45%; }
+#Begusarai { top:56%; left:57%; }
+#Khagaria { top:52%; left:66%; }
+#Bhagalpur { top:60%; left:70%; }
+#Gopalganj { top:34%; left:27%; }
+#Siwan { top:42%; left:27%; }
+#Saran { top:46%; left:32%; }
+#Patna { top:54%; left:43%; }
+#Nalanda { top:52%; left:52%; }
+#Jehanabad { top:60%; left:40%; }
+#Gaya { top:70%; left:40%; }
+#Aurangabad { top:72%; left:32%; }
+#Rohtas { top:68%; left:25%; }
+#Kaimur { top:60%; left:20%; }
+#Munger { top:60%; left:63%; }
+#Lakhisarai { top:60%; left:52%; }
+#Sheikhpura { top:64%; left:50%; }
+#Nawada { top:68%; left:48%; }
+#Jamui { top:70%; left:60%; }
+#Banka { top:70%; left:66%; }
+#WestChamparan { top:20%; left:28%; }
+#EastChamparan { top:28%; left:33%; }
+#Sheohar { top:37%; left:36%; }
+#Bhojpur { top:58%; left:30%; }
+#Buxar { top:55%; left:25%; }
+#Chhapra { top:38%; left:44%; }
+
+
+/* ========== Tumhari dusri wali CSS (student.css) add kiya gaya niche ========== */
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.view.hidden {
+  display: none;
+}
+
+.district-btn, .back-btn {
+  margin: 8px;
+  padding: 10px 20px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.district-btn:hover, .back-btn:hover {
+  background: #005fa3;
+}
+
+.students-box {
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 15px;
+  width: 60%;
+  border: 1px solid #ddd;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.student-card {
+  padding: 10px;
+  margin: 5px;
+  background: #e6f2ff;
+  border-radius: 6px;
+  cursor: pointer;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+
+.student-card:hover {
+  background: #cce5ff;
+}
+
+.detail-card {
+  max-width: 500px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+.detail-card img {
+  max-width: 120px;
+  border-radius: 10px;
+}
+
+.detail-card h2 {
+  margin: 10px 0;
+}
+
+.detail-card ul {
+  text-align: left;
+  padding-left: 20px;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Feedback - Bihar Culture</title>
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet">
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="https://i.imgur.com/tMTIK1h.png" alt="Bihar Logo" id="logoImg">
+    </div>
+    
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <ul class="nav-links" id="navLinks">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="Festival.html">Festival</a></li>
+      <li><a href="Art.html">Art</a></li>
+      <li><a href="Dialects.html">Dialects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="overlay">
+    <div class="container">
+      <h2>Connect with Bihar's Culture</h2>
+      <form id="feedbackForm">
+        <label for="name">Your Full Name</label>
+        <input type="text" id="name" name="name" placeholder="E.g., Your Name" required />
+
+
+
+
+        <label for="email">Your Email</label>
+<input type="email" id="email" name="email" placeholder="E.g., example@mail.com" required />
+
+        
+        <label for="message">Feedback or Message</label>
+        <textarea id="message" name="message" placeholder="Share your thoughts..." required></textarea>
+        
+        <label for="rating">🌟 Rate Bihar's Culture</label>
+        <div class="star-rating">
+          <input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars">★</label>
+          <input type="radio" name="rating" id="star4" value="4"><label for="star4" title="4 stars">★</label>
+          <input type="radio" name="rating" id="star3" value="3"><label for="star3" title="3 stars">★</label>
+          <input type="radio" name="rating" id="star2" value="2"><label for="star2" title="2 stars">★</label>
+          <input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star">★</label>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div id="feedbackList">
+        <div id="feedbackDisplay" class="feedback-item" style="display: none;"></div>
+      </div>  
+
+      <div class="map-section">
+        <h3>Explore Bihar on the Map</h3>
+        <div style="position: relative; width: 100%; height: 500px;">
+          <iframe
+            src="https://www.google.com/maps?q=Bihar,+India&hl=en&z=7&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div class="map-label">Bihar</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        Thank you for celebrating Bihar's soul with us — Madhubani, Mithila & beyond ✨
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h2>About Bihar</h2>
+        <p>History & Heritage</p>
+        <p>Traditional Arts & Crafts</p>
+        <p>Folk Dances & Music</p>
+        <p>Famous Festivals</p>
+        <p>Cultural Diversity</p>
+      </div>
+      
+      <div class="footer-section">
+        <h2>Popular Places</h2>
+        <p>Bodh Gaya</p>
+        <p>Rajgir</p>
+        <p>Patna Sahib</p>
+        <p>Vaishali</p>
+        <p>Nalanda University</p>
+      </div>
+      
+      <div class="footer-section">
+        <h2>Explore More</h2>
+        <p>Madhubani Paintings</p>
+        <p>Handicrafts of Bihar</p>
+        <p>Bihari Cuisine</p>
+        <p>Traditional Attire</p>
+        <p>Tourism Spots</p>
+      </div>
+      
+      <div class="footer-section">
+        <h2>Contact</h2>
+        <p>Email: Projectpotential@navgurukul.org</p>
+        <p>Phone: +91 </p>
+        <p>Tourism Office: Thakurganj, Bihar</p>
+        <img src="https://i.imgur.com/tMTIK1h.png" alt="Bihar logo" width="100">
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 Bihar - Our Culture. All Rights Reserved.</p>
+      <p>#ProudToBeBihari | #ExploreBihar | #BiharCulture</p>
+    </div>
+  </footer>
+
+  <script src="contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+/* ==== General Styles ==== */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Poore page ko scroll hone se roke */
+}
+
+body {
+  font-family: 'Baloo 2', cursive;
+  background-color: #fffaf4;
+  color: #402c1c;
+}
+
+/* ==== Navbar ==== */
+.navbar {
+  background-color: rgba(139, 0, 0, 0.8);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 70px;
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #ffd700;
+  transform: scale(1.1);
+}
+
+/* ==== Background Video ==== */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(50%);
+}
+
+/* ==== Quiz Container ==== */
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Box ko vertically center karega */
+  height: calc(100vh - 70px);
+  padding: 20px;
+  /* Niche se padding add kiya gaya hai taaki box bottom mein na chipke */
+  padding-bottom: 40px; 
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* ==== Quiz Boxes (Start, Quiz, Result) ==== */
+#start-screen, #quiz-box, #result-screen {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  color: #fff;
+  z-index: 1;
+  box-sizing: border-box;
+  max-height: 80vh; /* Box ki maximum height set karein */
+  overflow-y: auto; /* Agar box ka content zyada ho to sirf box ke andar scroll ho */
+  margin: auto; /* Box ko vertically aur horizontally center karega */
+}
+
+#start-screen {
+  border: 3px solid #ffd700;
+}
+
+#quiz-box {
+  border: 3px solid #ffd700;
+}
+
+#result-screen {
+  background-color: rgba(255, 250, 240, 0.95);
+  border: 3px solid #ffd700;
+  color: #402c1c;
+  font-family: 'Baloo 2', cursive;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  /* Box ki size ko chhota kiya hai */
+  max-width: 700px; 
+  max-height: 80vh; 
+}
+
+#quiz-container h2 {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+#result-screen h2 {
+  color: #402c1c;
+}
+
+/* ==== Start Screen ==== */
+#start-screen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+
+/* ==== Option Buttons ==== */
+#options button {
+  display: block;
+  margin: 12px auto;
+  width: 90%;
+  padding: 18px;
+  border-radius: 12px;
+  border: 3px solid hsl(30, 13%, 88%);
+  cursor: pointer;
+  background-color: #fef3e3;
+  color: #402c1c;
+  font-weight: bold;
+  font-size: 1.3rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#options button:hover {
+  background-color: hsl(350, 20%, 94%);
+  transform: scale(1.03);
+}
+
+#options button.selected {
+  background-color: #dcdcdc;
+  color: #333;
+}
+
+#options button.correct {
+  background-color: #4CAF50 !important;
+  color: white !important;
+  border-color: #388E3C;
+}
+
+#options button.wrong {
+  background-color: #f44336 !important;
+  color: white !important;
+  border-color: #d32f2f;
+}
+
+#options button:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* ==== Quiz Image ==== */
+.quiz-image {
+  width: 250px;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+/* ==== Answer Message ==== */
+#answer-message {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+}
+
+/* ==== Next Button ==== */
+#quiz-box > button {
+  background-color: #ffd700;
+  padding: 18px 35px;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#quiz-box > button:hover {
+  background-color: #e6c200;
+  transform: scale(1.05);
+}
+
+#score {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #402c1c;
+  margin-bottom: 20px;
+}
+
+#quiz-summary div {
+  background-color: #fff5e1;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#quiz-summary div:hover {
+  transform: translateY(-3px);
+  background-color: hwb(39 84% 6% / 0.542);
+}
+
+/* ==== Start Quiz Button ==== */
+#start-screen button {
+  background-color: lch(77.08% 76.86 86.43);
+  color: white;
+  padding: 18px 35px;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#start-screen button:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Restart Quiz Button ===== */
+#result-screen button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#result-screen button:hover {
+  background-color: #3e8e41;
+  transform: scale(1.05);
+}
+
+/* ==== Media Queries for Responsiveness ==== */
+@media (max-width: 768px) {
+    .navbar {
+        height: 60px;
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+        display: none;
+    }
+
+    .navbar:hover .nav-links {
+        display: flex;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    body {
+        padding-top: 60px;
+    }
+
+    .quiz-container {
+        padding: 10px;
+        height: calc(100vh - 60px);
+    }
+
+    #start-screen, #quiz-box, #result-screen {
+        padding: 20px;
+        max-width: 95%;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    #options button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    #quiz-summary div {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    #start-screen button, #quiz-box > button, #result-screen button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}

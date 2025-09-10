@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bihar Quiz</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <video autoplay muted loop id="bgVideo">
+    <source src="video2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <!-- <nav class="navbar">
+    <div class="logo">
+      <img src="image/bihar_logo.svg" alt="Apna Bihar Logo" id="logoImg">
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="Festival.html">Festival</a></li>
+      <li><a href="Art.html">Art</a></li>
+      <li><a href="Dialects.html">Dialects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quiz.html">quiz</a></li>
+    </ul>
+  </nav> -->
+
+  <div id="navbar"></div>
+  
+  <div class="quiz-container">
+    <!-- Start Screen -->
+    <div id="start-screen">
+      <h1>How Well Do You Know Bihar?</h1>
+      <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <!-- Quiz Box -->
+    <div id="quiz-box" class="hide">
+      <img id="quiz-img" class="quiz-image" src="" alt="">
+      <h2 id="question">Question text</h2>
+      <div id="options"></div>
+      <div id="answer-message"></div>
+      <button onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="hide">
+      <h2>Quiz Finished!</h2>
+      <p id="score"></p>
+      <div id="quiz-summary"></div>
+      <button onclick="restartQuiz()">Restart</button>
+    </div>
+  </div>
+
+  <script src="Quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+/* ==== Main Website Styles (unchanged base) ==== */
+body {
+  background-color: #fffaf4;
+  margin: 0;
+  padding: 0;
+  color: #402c1c;
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+}
+
+/* ==== Navbar (unchanged) ==== */
+.navbar {
+  background-color: rgba(139, 0, 0, 0.8);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 70px;
+}
+
+.logo {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #ffd700;
+  transform: scale(1.1);
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+/* ==== NEW: Food Cards (vertical line + flip) ==== */
+.food-cards-section {
+  padding: 40px 5%;
+  background: #fff;
+}
+
+.food-cards-section h2 {
+  text-align: center;
+  color: #c1440e;
+  font-size: 2.3rem;
+  margin: 0 0 25px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  perspective: 1200px;
+  cursor: pointer;
+  outline: none;
+  padding-bottom: 10px; /* reduced bottom padding */
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Vertical accent line */
+.flip-face::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  background: linear-gradient(180deg, #8b0000, #f7c200);
+}
+
+.flip-front img {
+  width: 100%;
+  height: 65%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 14px 16px 10px 20px; /* reduced bottom padding */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #8b0000;
+}
+
+.card-desc {
+  font-size: 0.98rem;
+  color: #5e412f;
+  line-height: 1.5;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* center all content after flip */
+  text-align: center;
+}
+
+.ingredients-title {
+  margin: 0 0 6px;
+  color: #c1440e;
+  font-size: 1.1rem;
+}
+
+.ingredients-list {
+  margin: 0 0 8px 18px;
+  padding: 0;
+  color: #402c1c;
+
+}
+
+.ingredients-list li {
+  margin: 4px 0;
+  list-style:none;
+}
+
+.recipe-btn {
+  align-self: center; /* center button */
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #ffd700;
+  font-weight: 700;
+  color: #402c1c;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.recipe-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* ==== About Bihar Food (unchanged) ==== */
+.about-bihar-food {
+  background-color: #ffffff;
+  padding: 50px 20px;
+  text-align: center;
+  color: #4a2c1a;
+  line-height: 1.8;
+  max-width: 1000px;
+  margin: auto;
+  font-size: 1.2rem;
+}
+
+.about-bihar-food h2 {
+  font-size: 2.5rem;
+  color: #c1440e;
+  margin-bottom: 20px;
+}
+
+/* ==== Modal (unchanged) ==== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  padding-top: 120px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: red;
+}
+
+/* ==== Slider (unchanged) ==== */
+.food-slider-section {
+  padding: 40px 20px;
+  background: #fdf5e6;
+  text-align: center;
+  font-family: 'Baloo 2', cursive;
+  overflow: hidden;
+}
+
+.food-slider-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #8b0000;
+}
+
+.food-slider {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scrollSlider 40s linear infinite;
+}
+
+.food-slider a {
+  flex-shrink: 0;
+  height: 200px;
+}
+
+.food-slider img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.food-slider img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes scrollSlider {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 7 * 20px));
+  }
+}
+
+/* ==== Footer (unchanged) ==== */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+}
+
+.footer-section h2 {
+  color: #f7c200;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #555;
+  padding-top: 20px;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-slider a,
+  .food-slider img {
+    width: 250px;
+    height: 170px;
+  }
+
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bihar</title>
+    <link rel="stylesheet" href="art.css">
+    
+</head>
+
+<body>
+    <!-- navbar.html -->
+<div class="navbar">
+  <div class="logo">
+    <img src="image/bihar_logo.svg" alt="Bihar Logo" class="logo-img">
+  </div>
+
+  <!-- Hamburger button -->
+  <div class="menu-toggle" id="menu-toggle">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="food.html">Food</a></li>
+    <li><a href="Festival.html">Festival</a></li>
+    <li><a href="art.html">Art</a></li>
+    <li><a href="Dialects.html">Dialect</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+  </ul>
+</div>
+
+
+</body>
+<script>
+   fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Hamburger activate
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      });
+</script>
+</html>

@@ -68,6 +68,47 @@
 }
 
 
+
+
+.hero {
+  text-align: center;
+  padding: 60px 20px 30px;
+  background: linear-gradient(90deg, #d8577e, #61a3e0);
+  color: white;
+  margin: 0;
+}
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+.hero .tagline {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+
+/* Blurred background image */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/Campus_Main-project/final/images/student.jpeg") no-repeat center center/cover;
+  filter: blur(2px) brightness(0.6);
+  z-index: -1; /* ensure background is behind everything */
+}
+
+/* Ensure content is visible above background */
+body {
+  position: relative;
+  z-index: 1;
+  color: #fff; /* default white text for contrast */
+  font-family: "Poppins", sans-serif;
+}
+
+
 /* council ka navbar ka style */
 .navbar ul {
   list-style: none;  
@@ -96,20 +137,22 @@
 }
 
 * { box-sizing: border-box; }
-body {
+/* body {
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
   font-family: Arial, sans-serif;
-  padding-top: 90px;
+
   text-align: center;
   color: #0b0b0b;
-}
+} */
 
 header { text-align:center; padding:10px 0; }
 h1 { margin: 8px 0; font-size: 20px; }
 
-.map-area { display:flex; justify-content:center; }
+.map-area 
+
+{ display:flex; justify-content:center; }
 .map-wrapper {
   position: relative;
   width: 95%;

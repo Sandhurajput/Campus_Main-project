@@ -239,10 +239,13 @@ h1 { margin: 8px 0; font-size: 20px; }
   overflow-y: auto;
   position: relative;
 }
-.panel-content h2 { margin-top:0; font-size:18px; text-align:center; }
-.panel-content ul { list-style:none; padding:0; margin:0; }
+.panel-content h2 { margin-top:0; font-size:18px; text-align:center; color: black; }
+.panel-content ul { list-style:none; padding:0; margin:0; color: black; }
 .panel-content li {
   padding: 8px 12px;
+  color: black;
+  text-align: center;
+
   margin-bottom: 6px;
   border-radius: 6px;
   background: #f7f9fc;
@@ -305,6 +308,7 @@ h1 { margin: 8px 0; font-size: 20px; }
   border-radius: 6px;
   margin-bottom: 6px;
   font-size: 13px;
+  color: black;
 }
 
 .close-modal {

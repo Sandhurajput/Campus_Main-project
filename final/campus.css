@@ -151,7 +151,7 @@ header h1 {
   .houses-container {
     flex-direction: row; /* Change to row on larger screens */
     justify-content: center; /* Space them out evenly */
-    align-items: stretch; /* Make all cards the same height */
+    align-items: flex-start; /* Make all cards the same height */
   }
 }
 /* --- END NEW CSS --- */

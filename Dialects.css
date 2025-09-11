@@ -13,7 +13,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Navbar */
+/* Navbar
 .navbar {
   background-color: rgba(139, 0, 0, 0.9);
   padding: 15px 30px;
@@ -31,9 +31,9 @@ body {
   color: white;
   font-size: 1.8rem;
   font-weight: bold;
-}
+} */
 
-.logo-img {
+/* .logo-img {
   height: 50px;
   width: auto;
 }
@@ -53,7 +53,7 @@ body {
 .nav-links li a:hover {
   color: #ffd700;
   transform: scale(1.1);
-}
+} */
 
 /* Dropdown Language Bar */
 .navbar-langauge {
@@ -141,6 +141,7 @@ body {
   padding: 50px 8%;
   gap: 50px;
   flex-wrap: wrap;
+  margin-top: 100px;
 }
 
 .language-content {

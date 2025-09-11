@@ -1,14 +1,8 @@
-/* Achievement  */
-
-
-/* मुख्य सामग्री स्टाइल */
 main {
     max-width: 1200px;
     margin: 20px auto;
     padding: 0 20px;
 } 
-
-
 
 section {
     background-color: white;
@@ -26,8 +20,6 @@ section h2 {
     border-bottom: 2px solid #f0f0f0;
 }
 
-
-/* सेक्शन सामग्री लेआउट */
 .section-content {
     display: flex;
     flex-wrap: wrap;
@@ -49,7 +41,6 @@ section h2 {
     text-align: justify;
 }
 
-/* इमेज प्लेसहोल्डर */
 .image-placeholder {
     flex: 1;
     min-width: 300px;
@@ -84,7 +75,6 @@ section h2 {
     padding: 20px;
 }
 
-/* प्रसिद्ध व्यक्तित्व सेक्शन */
 .personalities {
     display: flex;
     flex-wrap: wrap;
@@ -119,7 +109,6 @@ section h2 {
     margin-bottom: 10px;
 }
 
-/* उपलब्धियां सेक्शन */
 .achievements {
     display: flex;
     flex-wrap: wrap;
@@ -150,7 +139,6 @@ section h2 {
     font-size: 1rem;
 }
 
-/* गांव सौंदर्य सेक्शन */
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -180,7 +168,6 @@ section h2 {
     border-top: 1px solid #e0e0e0;
 }
 
-/* सांस्कृतिक विरासत सेक्शन */
 .heritage-cards {
     display: flex;
     flex-wrap: wrap;
@@ -252,7 +239,6 @@ section h2 {
   }
 }
 
-
 /* Army Contribution - CSS */
 
 #army-contribution .section-content {
@@ -260,7 +246,7 @@ section h2 {
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
-    flex-wrap: wrap; /* for responsiveness */
+    flex-wrap: wrap; 
 }
 
 #army-contribution .text-content {

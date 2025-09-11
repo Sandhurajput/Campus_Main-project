@@ -7,21 +7,7 @@
   <link rel="stylesheet" href="Festival.css"/>
 </head>
 <body>
-  <!-- <div class="navbar">
-    <div class="logo">
-      <img src="image/bihar_logo.svg" alt="Bihar Logo" class="logo-img">
-    </div>
-    <ul class="nav-links">
-      <li><a href="home.html">Home</a></li>
-      <li><a href="food.html">Food</a></li>
-      <li><a href="Festival.html">Festival</a></li>
-      <li><a href="art.html">Art</a></li>
-      <li><a href="Dialects.html">Dialect</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="quiz.html">quiz</a></li>
-    </ul>
-  </div> -->
- <!-- Hero Section -->
+   <div id="navbar"></div>
 <section class="hero">
   <div class="hero-text">
     <h1>Festival – A Divine Celebration in Bihar</h1>
@@ -32,9 +18,6 @@
     <img src="images/chatpuja.jpg" alt="Chhath Puja Image" />
   </div>
 </section>
-
-
-
   <section class="festival-container">
   <div class="festival-card">
     <img src="images/chatpuja.jpg" alt="Chhath Puja" />
@@ -124,9 +107,22 @@ symbolizing marital bliss and the start of the monsoon season.</p>
     <p>#ProudToBeBihari | #ExploreBihar | #BiharCulture</p>
   </div>
 </footer>
+  <script>
 
+      fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
 
+        // Hamburger activate
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
 
-  <script src="script.js"></script>
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      });
+
+  </script>
 </body>
 </html>
